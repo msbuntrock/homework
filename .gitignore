@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+#things you dnt rlly care about and are 
+#temporary DONT track these changes and is ignored by git 
+#you can add to this folder for things for git to ignore 
