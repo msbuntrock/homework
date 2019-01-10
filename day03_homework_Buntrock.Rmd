@@ -25,6 +25,11 @@ vocab.score.high.percent <- subset(Vocab, Vocab$vocabulary > 10 )
 ```{r}
 
 quantile(Vocab.score, seq(0,1, .05))
-vocab.score.high.n.low <- subset(Vocab, Vocab$vocabulary > 10 & Vocab$vocabulary <2 )
+vocab.score.high.n.low <- subset(Vocab, Vocab$vocabulary > 10 & Vocab$vocabulary < 2 )
+
+
+length(which(Vocab$vocabulary == 10))/nrow(Vocab)
+                                                length(which(Vocab$vocabulary == 0 & 1))/nrow(Vocab)
+
 ```
 
