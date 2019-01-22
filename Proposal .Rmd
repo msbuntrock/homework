@@ -1,0 +1,81 @@
+---
+title: "Proposal"
+name: Madison Buntrock 
+due: 8:00 PM EST, Tuesday, January
+output: html_document
+---
+
+1. Pick some data to work with
+```{r}
+library(carData)
+data(Vocab)
+
+```
+
+2. Perform some kind of analysis, which may result in one or
+more of:
+(a) Numerical results
+(b) A complex object (like a regression analysis)
+(c) Graphical results (like a plot)
+```{r}
+library(ggplot2)
+#Is education predictive of vocab scores? 
+
+voc.regression <- lm(vocabulary ~ education, data = Vocab)
+str(voc.regression)
+
+
+
+ggplot(Vocab, aes(education, vocabulary))+ geom_point() + geom_smooth(method = "lm")+facet_wrap(~year)
+
+ggplot(Vocab, aes(education, vocabulary))+ geom_histogram(stat = "identity")+facet_wrap(~year)
+
+
+
+
+
+
+```
+3. Report the analysis with appropriate documentation
+```{r}
+
+# r = .33, 33% of variance of vocab scores is explained by education. This is a moderate positive correlation between education level and vocabulary scores. When grouped by year this effect is consistent. 
+
+```
+
+4. Some aspect of the above (data/analysis/reporting) needs to be
+“non-trivial,” i.e., something we have not explicitly covered in
+class. Examples include:
+• Data: especially messy/big/complex data Example: analyze a complex public
+data set, with code that would be
+helpful to other people in wrangling
+this data set to work with on their own
+• Programming-dependent analysis: doing something that
+would be difficult/infeasible/impossible/annoying with a
+simple “point-and-click” program interface Example: a simulation-based analysis
+requiring loops/iteration • Results: tricky visualization, novel way of reporting results
+Example: a cool new way to visually
+• Code: providing useful new function that would be of inter- represent/explore data in your field
+est to other people Example: a convenience function
+that people in your lab could use in
+analyzing data that they commonly
+work with
+```{r}
+quartile.sum.vocab <- for(this.group in c("1974", "1976", "1978", "1982", "1984", "1987", "1988", "1989", "1990", "1991", "1993", "1994", "1996", "1998", "2000", "2004",  "2006", "2008", "2010", "2012", "2014", "2016")) {
+  print(summary(Vocab[Vocab$year == this.group, ])) 
+}
+
+
+```
+
+
+5. Post results and replicable code via GitHub (preferred), or
+email a complete zipped repository to me. This will be described
+fully in class. The requirement means that your code
+should compile/run/complete fully. If it does, and it does what
+you said in your proposal, then the project will be complete.
+You will be able to verify that it works ahead of time, so there
+should be no uncertainty in whether the project “passes” or not.
+The due date for the project is  
+
+
